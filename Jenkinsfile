@@ -12,13 +12,11 @@ node {
 stage name: 'ci and qa'
 parallel(ci: {
   node {
-    echo 'deploying to ci'
-    sh 'sleep 10'
+    deploy('ci')
   }
 },qa: {
   node {
-    echo 'deploying to qa'
-    sh 'sleep 20'
+    deploy('qa')
   }
 })
 
@@ -27,6 +25,10 @@ stage name: 'prod'
 input 'Ready for Production?'
 
 node {
-  echo 'deploying to prod'
+  deploy('prod')
+}
+
+def deploy(String env) {
+  echo "deploying to ${env}"
   sh 'sleep 10'
 }
