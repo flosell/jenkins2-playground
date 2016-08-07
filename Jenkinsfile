@@ -1,4 +1,4 @@
-stage name: "build and test", concurrency: 2 {
+stage name: "build and test" {
     node {
       git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
       def mvnHome = tool 'M3'
