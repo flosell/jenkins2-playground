@@ -23,7 +23,9 @@ parallel(ci: {
 })
 
 stage name: 'prod'
-input: "Ready for Production?"
+
+input: 'Ready for Production?'
+
 node {
   echo 'deploying to prod'
   sh 'sleep 10'
