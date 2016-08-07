@@ -7,3 +7,14 @@ stage name: "build and test" {
       step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
     }
 }
+
+stage name: "ci and qa" {
+    parallel(ci: {
+        echo "deploying to ci"
+        sh "sleep 10"
+    },qa: {
+        echo "deploying to qa"
+        sh "sleep 20"
+    })
+
+}
